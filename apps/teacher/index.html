@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel Docente</title>
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<header class="header"><div class="brand"><span class="logo"></span><strong>Panel Docente</strong></div>
+<nav><a class="btn" href="../../index.html">← Volver</a></nav></header>
+<main class="container">
+  <section class="card">
+    <h3>📊 Agregados locales</h3>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+      <div class="card"><strong>Sesiones totales</strong><div id="k-total" class="meta">—</div></div>
+      <div class="card"><strong>Duración total (min)</strong><div id="k-dur" class="meta">—</div></div>
+      <div class="card"><strong>Promedio duración (min)</strong><div id="k-avg" class="meta">—</div></div>
+      <div class="card"><strong>Δ emocional (después‑antes)</strong><div id="k-delta" class="meta">—</div></div>
+    </div>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn" id="export-json">Export JSON</button>
+      <button class="btn" id="export-csv">Export CSV</button>
+      <button class="btn" id="clear">Limpiar analítica</button>
+    </div>
+  </section>
+  <section class="card">
+    <h3>Eventos (local)</h3>
+    <pre id="events" class="meta">—</pre>
+  </section>
+</main>
+<script type="module" src="./teacher.js"></script>
+</body>
+</html>

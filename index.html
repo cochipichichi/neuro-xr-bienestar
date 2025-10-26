@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>🧠 Neuro-XR — Portal</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header" role="banner">
+  <div class="brand"><span class="logo" aria-hidden="true"></span><strong>Neuro‑XR</strong><span class="badge">v1.2</span></div>
+  <nav aria-label="Navegación">
+    <a class="btn" href="apps/vr/index.html">🕶️ VR</a>
+    <a class="btn" href="apps/ar/index.html">📱 AR</a>
+    <a class="btn" href="apps/teacher/index.html">👩‍🏫 Docente</a>
+  </nav>
+</header>
+<main class="container" role="main">
+  <section class="grid cards" aria-label="Tarjetas">
+    <article class="card">
+      <h3>Temas calmantes</h3>
+      <p class="meta">Elige: mar, bosque, noche.</p>
+      <div>
+        <button class="btn" data-theme="mar"><span class="theme-dot" style="background:#2f81f7"></span> Mar</button>
+        <button class="btn" data-theme="bosque"><span class="theme-dot" style="background:#2ea043"></span> Bosque</button>
+        <button class="btn" data-theme="noche"><span class="theme-dot" style="background:#8b5cf6"></span> Noche</button>
+      </div>
+    </article>
+    <article class="card">
+      <h3>Rutinas (Playlists)</h3>
+      <p class="meta">Secuencias 5–10 min.</p>
+      <div id="playlists"></div>
+    </article>
+    <article class="card">
+      <h3>Accesibilidad</h3>
+      <p class="meta">TTS + subtítulos, foco visible, teclado, reducir animaciones.</p>
+      <div><button class="btn" id="toggleTTS">🔊 TTS</button></div>
+    </article>
+  </section>
+</main>
+<script type="module">
+import * as Th from './js/themes.js';
+import * as PL from './js/playlists.js';
+import { haptic } from './js/ui.js';
+
+// Theme
+await Th.initTheme();
+document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click', async ()=>{ await Th.applyTheme(b.dataset.theme); haptic(); }));
+
+// TTS toggle
+const TTS_KEY='neuroxr.tts.enabled';
+const tbtn=document.getElementById('toggleTTS');
+function paintTTS(){ const on = localStorage.getItem(TTS_KEY)==='1'; tbtn.textContent = on? '🔇 TTS' : '🔊 TTS'; }
+tbtn.addEventListener('click', ()=>{ const on = localStorage.getItem(TTS_KEY)==='1'; localStorage.setItem(TTS_KEY, on?'0':'1'); paintTTS(); haptic(); });
+paintTTS();
+
+// Playlists
+const list = await PL.listPlaylists();
+const cont = document.getElementById('playlists');
+cont.innerHTML = list.map(p=>{
+  const q = PL.toURLParams(p);
+  return `<div class="card" style="background:#ffffff08;margin-top:8px"><strong>${p.name}</strong><br><span class="meta">${(p.phases||[]).map(x=>x.label).join(' · ')}</span><br><a class="btn solid" href="apps/vr/index.html?${q}">▶ VR</a> <a class="btn" href="apps/ar/index.html?${q}">▶ AR</a></div>`;
+}).join('');
+
+// SW
+if('serviceWorker' in navigator && location.protocol==='https:'){ navigator.serviceWorker.register('./sw.js').catch(()=>{}); }
+</script>
+</body>
+
+<div class="card">
+<footer class="footer">
+  <div>📚<strong>Neotech EduLab — Educación Inmersiva & I+D SpA</strong></div>
+  <div>Todos los derechos reservados - Prohibida su copia y/o reproduccion</div>
+  <div>🛠️Creado por:</div>
+  <div>👩‍🏫Belén Acuña Pérez — 📧 belen.acpe@gmail.com · 📞 +56 9 6266 4960</div>
+  <div>👨‍💻Francisco Pinto — 📧 franciscoandresp@gmail.com · 📞 +56 9 2002 7992</div>
+  <div>Hecho con ❤️ para el Liceo Bicentenario de Excelencia Polivalente San Nicolás</div>
+ </footer>
+</div>
+
+
+
+</html>
+

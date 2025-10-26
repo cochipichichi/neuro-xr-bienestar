@@ -1,0 +1,20 @@
+{
+  "name": "Rutina Calmante 7 min",
+  "durationMin": 7,
+  "pattern": "box",
+  "model": "calm_orb.glb",
+  "phases": [
+    {
+      "label": "Respirar 4-4-4-4",
+      "min": 3
+    },
+    {
+      "label": "Foco visual",
+      "min": 3
+    },
+    {
+      "label": "Silencio",
+      "min": 1
+    }
+  ]
+}

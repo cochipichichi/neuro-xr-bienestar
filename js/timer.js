@@ -1,0 +1,8 @@
+export class Timer{
+  constructor({durationSec=300,onTick=(()=>{}),onDone=(()=>{})}={}){ this.total=durationSec; this.left=durationSec; this.running=false; this._t=null; this.onTick=onTick; this.onDone=onDone; }
+  start(){ if(this.running) return; this.running=true; const tick=()=>{ this.left--; this.onTick(this.left); if(this.left<=0){ this.stop(); this.onDone(); } else { this._t=setTimeout(tick,1000); } }; this.onTick(this.left); this._t=setTimeout(tick,1000); }
+  pause(){ if(!this.running) return; this.running=false; clearTimeout(this._t); }
+  stop(){ clearTimeout(this._t); this.running=false; this.left=this.total; this.onTick(this.left); }
+  setDuration(sec){ this.total=sec; this.left=sec; }
+  fmt(){ const m=Math.floor(this.left/60), s=this.left%60; return `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`; }
+}

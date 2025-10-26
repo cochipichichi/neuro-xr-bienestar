@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AR — Imágenes calmantes</title>
+<link rel="stylesheet" href="../../styles.css">
+</head>
+<body>
+<header class="header"><div class="brand"><span class="logo"></span><strong>AR — Imágenes</strong></div>
+<nav><a class="btn" href="../../index.html">← Volver</a></nav></header>
+<main class="container">
+  <section class="card">
+    <p class="meta">Requiere `immersive-ar` + `hit-test`. Puedes usar <strong>Simulación</strong> sin XR.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="btn solid" id="startAR">Iniciar AR</button>
+      <button class="btn" id="simulate">Simulación</button>
+      <label>⏱️ Duración (min): <input id="dur" type="number" min="1" max="20" value="5" style="width:64px"></label>
+      <label>🧩 Modelo GLB: <select id="modelSel"></select></label>
+      <button class="btn" id="tts">🔊 TTS</button>
+    </div>
+    <p class="meta">Gestos: tap = pausa/continuar · long‑press = terminar · swipe = cambiar patrón</p>
+    <p id="status" class="meta">—</p>
+    <div id="sim" class="card" style="display:none;margin-top:12px">
+      <h3>Simulación AR</h3>
+      <p class="meta">Coloca imágenes calmantes en pantalla.</p>
+      <div id="gallery" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      <button class="btn" id="addImg">➕ Añadir imagen</button>
+    </div>
+  </section>
+</main>
+<div id="subtitle" class="subtitle" role="status" aria-live="polite" style="display:none"></div>
+<div id="timer" class="timer" aria-live="polite" style="display:none">05:00</div>
+<script type="module" src="./ar.js"></script>
+</body>
+</html>

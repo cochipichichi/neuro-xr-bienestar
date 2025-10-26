@@ -1,0 +1,22 @@
+{
+  "pattern": "box_4444_es",
+  "cycle_sec": 16,
+  "steps": [
+    {
+      "t": 0,
+      "text": "Inhala… 1 2 3 4"
+    },
+    {
+      "t": 4,
+      "text": "Sostén… 1 2 3 4"
+    },
+    {
+      "t": 8,
+      "text": "Exhala… 1 2 3 4"
+    },
+    {
+      "t": 12,
+      "text": "Sostén… 1 2 3 4"
+    }
+  ]
+}

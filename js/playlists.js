@@ -1,0 +1,2 @@
+export async function listPlaylists(){ try{ const p = await fetch('./playlists/demo_rutina.json').then(r=>r.json()); return [p]; }catch{ return []; } }
+export function toURLParams(p){ const q = new URLSearchParams(); if(p?.durationMin) q.set('dur', p.durationMin); if(p?.pattern) q.set('pat', p.pattern); if(p?.model) q.set('glb', p.model); return q.toString(); }
