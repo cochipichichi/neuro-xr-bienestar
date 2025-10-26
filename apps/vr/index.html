@@ -1,35 +1,21 @@
 <!doctype html>
 <html lang="es">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VR — Respiración guiada</title>
-<link rel="stylesheet" href="../../styles.css">
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VR — Respiración</title><link rel="stylesheet" href="../../styles.css"></head>
 <body>
-<header class="header"><div class="brand"><span class="logo"></span><strong>VR — Respiración</strong></div>
-<nav><a class="btn" href="../../index.html">← Volver</a></nav></header>
-<main class="container">
-  <section class="card">
-    <p class="meta">WebXR requiere dispositivo/HTTPS. Si no hay soporte, usa <strong>Simulación</strong>.</p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn solid" id="startVR">Iniciar VR</button>
-      <button class="btn" id="simulate">Simulación</button>
-      <label>⏱️ Duración (min): <input id="dur" type="number" min="1" max="20" value="5" style="width:64px"></label>
-      <label>🧩 Modelo GLB: <select id="modelSel"></select></label>
-      <button class="btn" id="togglePattern">Cambiar patrón (4‑4‑4‑4 / 4‑7‑8)</button>
-      <button class="btn" id="tts">🔊 TTS</button>
-    </div>
-    <p class="meta">Gestos: tap = pausa/continuar · long‑press = terminar · swipe = cambiar patrón</p>
-    <p id="status" class="meta">—</p>
-    <div id="sim" class="card" style="display:none;margin-top:12px">
-      <h3>Simulación</h3>
-      <p class="meta">Visual + subtítulos. Toca para pausar/continuar.</p>
-      <div id="circle" style="width:120px;height:120px;border-radius:999px;background:#2f81f7;transition:transform 4s ease"></div>
-    </div>
-  </section>
-</main>
+<header class="header"><div class="brand"><span class="logo"></span><strong>VR — Respiración</strong></div><nav><a class="btn" href="../../index.html">← Volver</a></nav></header>
+<main class="container"><section class="card">
+<p class="meta">WebXR requiere dispositivo/HTTPS. Usa Simulación si no está disponible.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button class="btn solid" id="startVR">Iniciar VR</button><button class="btn" id="simulate">Simulación</button>
+<label>⏱️ Min: <input id="dur" type="number" min="1" max="20" value="5" style="width:64px"></label>
+<label>🧩 GLB: <select id="modelSel"></select></label>
+<button class="btn" id="togglePattern">Cambiar patrón</button><button class="btn" id="tts">🔊 TTS</button>
+</div>
+<p class="meta">Gestos: tap = pausa/continuar · long‑press = terminar · swipe = cambiar patrón</p>
+<p id="status" class="meta">—</p>
+<div id="sim" class="card" style="display:none;margin-top:12px"><h3>Simulación</h3><div id="circle" style="width:120px;height:120px;border-radius:999px;background:#2f81f7;transition:transform 4s ease"></div></div>
+</section></main>
 <div id="subtitle" class="subtitle" role="status" aria-live="polite" style="display:none"></div>
 <div id="timer" class="timer" aria-live="polite" style="display:none">05:00</div>
-<script type="module" src="./vr.js"></script>
-</body>
-</html>
+<script type="module" src="./vr.js"></script></body></html>

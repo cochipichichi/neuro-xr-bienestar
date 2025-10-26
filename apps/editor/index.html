@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editor de Rutinas</title><link rel="stylesheet" href="../../styles.css"></head>
+<body>
+<header class="header"><div class="brand"><span class="logo"></span><strong>Editor de Rutinas</strong></div><nav><a class="btn" href="../../index.html">← Volver</a></nav></header>
+<main class="container">
+<section class="card">
+  <h3>Creador visual</h3>
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <label>Nombre: <input id="name" placeholder="Mi rutina"></label>
+    <label>Duración total (min): <input id="dur" type="number" min="1" max="20" value="7"></label>
+    <label>Patrón: 
+      <select id="pat"><option value="box">4‑4‑4‑4</option><option value="478">4‑7‑8</option></select>
+    </label>
+    <label>Modelo GLB: <input id="glb" placeholder="calm_orb.glb"></label>
+  </div>
+  <div style="margin-top:8px">
+    <button class="btn" id="add">➕ Agregar fase</button>
+    <button class="btn solid" id="export">📤 Exportar JSON</button>
+  </div>
+</section>
+<section class="card">
+  <h3>Fases</h3>
+  <div id="phases" class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px"></div>
+</section>
+<section class="card">
+  <h3>Previsualización</h3>
+  <div id="preview" class="meta">—</div>
+</section>
+</main>
+<script type="module" src="./editor.js"></script>
+</body></html>

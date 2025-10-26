@@ -1,0 +1,4 @@
+// BLE Heart Rate (Web Bluetooth). On-device only; no PII stored.
+export async function connectHR(){ if(!navigator.bluetooth) throw new Error('Web Bluetooth no soportado'); const device = await navigator.bluetooth.requestDevice({ filters:[{services:['heart_rate']}] }); const server = await device.gatt.connect(); const service = await server.getPrimaryService('heart_rate'); const char = await service.getCharacteristic('heart_rate_measurement'); return { device, char }; }
+export function parseHR(value){ const d = value.buffer ? new DataView(value.buffer) : value; let hr = 0; if(d.getUint8(0) & 0x01){ hr = d.getUint16(1,true);} else { hr = d.getUint8(1);} return hr; }
+export async function onHR(char, cb){ await char.startNotifications(); char.addEventListener('characteristicvaluechanged', e=>{ const v = e.target.value; cb(parseHR(v)); }); }

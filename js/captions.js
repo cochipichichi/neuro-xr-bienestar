@@ -1,4 +1,3 @@
-// Patrones de respiración con pasos
 export const BOX_4444 = {cycle:16, steps:[{t:0,text:'Inhala… 1 2 3 4'},{t:4,text:'Sostén… 1 2 3 4'},{t:8,text:'Exhala… 1 2 3 4'},{t:12,text:'Sostén… 1 2 3 4'}]};
 export const PAT_478 = {cycle:19, steps:[{t:0,text:'Inhala… 1 2 3 4'},{t:4,text:'Sostén… 1 2 3 4 5 6 7'},{t:11,text:'Exhala… 1 2 3 4 5 6 7 8'},{t:19,text:''}]};
 export function captionAt(t, pattern=BOX_4444){ const mod = t % pattern.cycle; let last=pattern.steps[0].text; for(const s of pattern.steps){ if(mod >= s.t) last = s.text; else break; } return last; }

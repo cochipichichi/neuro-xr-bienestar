@@ -1,3 +1,1 @@
-export function speak(text, {lang='es-ES', rate=1.0, pitch=1.0, volume=1.0}={}){
-  try{ const s = new SpeechSynthesisUtterance(text); s.lang=lang; s.rate=rate; s.pitch=pitch; s.volume=volume; window.speechSynthesis.cancel(); window.speechSynthesis.speak(s); }catch{ /* no-op */ }
-}
+export function speak(text, {lang='es-ES', rate=1.0, pitch=1.0, volume=1.0}={}){ try{ const s = new SpeechSynthesisUtterance(text); s.lang=lang; s.rate=rate; s.pitch=pitch; s.volume=volume; window.speechSynthesis.cancel(); window.speechSynthesis.speak(s); }catch{} }

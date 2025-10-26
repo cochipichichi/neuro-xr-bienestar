@@ -1,0 +1,8 @@
+import { downloadJSON } from '../../js/ui.js';
+const phases = []; const P = document.getElementById('phases'); const prev = document.getElementById('preview');
+function render(){ P.innerHTML = phases.map((p,i)=>`<div class="card"><strong>${p.label}</strong><br><span class="meta">${p.min} min</span><br><button class="btn" data-i="${i}">🗑️ Eliminar</button></div>`).join(''); const o = getObj(); const q = new URLSearchParams(); if(o.durationMin) q.set('dur', o.durationMin); if(o.pattern) q.set('pat', o.pattern==='478'?'478':'box'); if(o.model) q.set('glb', o.model); prev.innerHTML = `<a class="btn solid" href="../vr/index.html?${q}">▶ Probar en VR</a> <a class="btn" href="../ar/index.html?${q}">▶ Probar en AR</a>`; }
+function getObj(){ return { name: document.getElementById('name').value||'Mi rutina', durationMin: parseInt(document.getElementById('dur').value||'7',10), pattern: document.getElementById('pat').value, model: document.getElementById('glb').value||'', phases }; }
+document.getElementById('add').addEventListener('click', ()=>{ const label = prompt('Nombre de la fase (ej. Respirar 4‑4‑4‑4)')||'Fase'; const min = parseInt(prompt('Minutos (1‑10)')||'3',10); phases.push({label, min: Math.max(1, Math.min(10, min))}); render(); });
+P.addEventListener('click', (e)=>{ const i = e.target?.dataset?.i; if(i!==undefined){ phases.splice(parseInt(i,10),1); render(); } });
+document.getElementById('export').addEventListener('click', ()=>{ const o = getObj(); downloadJSON((o.name||'rutina').replace(/\s+/g,'_')+'.json', o); });
+render();

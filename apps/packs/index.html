@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Importar Packs</title><link rel="stylesheet" href="../../styles.css"></head>
+<body>
+<header class="header"><div class="brand"><span class="logo"></span><strong>Packs</strong></div><nav><a class="btn" href="../../index.html">← Volver</a></nav></header>
+<main class="container">
+<section class="card">
+  <h3>📦 Importar pack (.zip)</h3>
+  <p class="meta">Incluye <code>.glb</code> en <code>models/</code> y <code>themes.json</code> opcional.</p>
+  <input type="file" id="file" accept=".zip" class="btn">
+  <p class="meta">Se almacenará en la caché de la PWA para uso offline.</p>
+</section>
+<section class="card"><h3>Estado</h3><pre id="log" class="meta">—</pre></section>
+</main>
+<script type="module" src="./packs.js"></script>
+</body></html>

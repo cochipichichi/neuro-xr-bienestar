@@ -1,32 +1,16 @@
-# 🧠 Neuro-XR: Atención & Bienestar en Aula — v1.2
+# 🧠 Neuro-XR — v1.3
 
-**Slug:** `neuro-xr-bienestar`
+Novedades v1.3:
+- **Packs**: importador `.zip` (temas, modelos `.glb`, audios) → guarda en cache/PWA y actualiza manifests.
+- **Editor de rutinas**: constructor visual (drag & drop) con export `.json` y previsualización VR/AR.
+- **BLE (opcional)**: frecuencia cardíaca con Web Bluetooth (on-device, sin PII).
+- **Privacidad diferencial local (LDP)**: ruido Laplace opcional en export Docente + buckets.
 
-Mini‑apps VR/AR de respiración guiada, sonidos e imágenes calmantes con **analítica anónima**, **playlists**, **TTS**, **gestos**, **temas**, y **panel del docente**.
+Se conservan funciones de v1.2 (playlists, TTS, gestos, temas, panel Docente).
 
-## Novedades v1.2
-1. **Playlists / Rutinas (5–10 min):** crea secuencias (respirar, foco visual, silencio) en `/playlists/*.json` y lánzalas desde el portal.
-2. **TTS + Subtítulos sincronizados:** `SpeechSynthesis` lee los pasos de respiración en español, en paralelo a captions (box 4-4-4-4).
-3. **Panel del docente:** agregados locales (duración, conteo sesiones, deltas emocionales); export **CSV** y **JSON**.
-4. **Gestos:** tap = **pausa/continuar**, long‑press = **terminar**, swipe = **cambiar patrón** (4‑4‑4‑4 ↔ 4‑7‑8).
-5. **Temas calmantes + hápticos:** paletas “bosque/mar/noche”; vibración sutil en eventos (si `navigator.vibrate`).
+## Rutas nuevas
+- `/apps/packs/` – importador ZIP (JSZip vía CDN).
+- `/apps/editor/` – editor visual de rutinas.
+- BLE: `js/ble.js`; LDP: `js/dp.js`; Packs: `js/packs.js`.
 
-## Estructura
-```
-/apps/vr        # VR Respiración (GLB + timer + gestos + TTS)
-/apps/ar        # AR Hit-test (GLB + timer + gestos + TTS)
-/apps/teacher   # Panel docente (analytics → CSV/JSON)
-/assets/models  # .glb opcionales (edita manifest.json)
-/assets/subtitles # .vtt / steps.json
-/assets/themes  # paletas de tema
-/playlists      # rutinas .json (secuencias guiadas)
-/js             # ui.js, analytics.js, timer.js, captions.js, gestures.js, tts.js, themes.js, playlists.js
-index.html      # Portal con tarjetas, temas, rutinas y accesibilidad
-sw.js, manifest.webmanifest
-```
-
-## Publicación
-- Estático + HTTPS (GitHub Pages funciona). Si WebXR no está disponible, usa **Simulación**.
-- Analítica: localStorage (sin PII). Exporta desde el portal o el panel docente.
-
-MIT © 2025
+> Importante: WebXR/BL requiere HTTPS y dispositivos compatibles.
